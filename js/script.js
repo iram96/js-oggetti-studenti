@@ -42,31 +42,35 @@ let studentCell = document.getElementById('student-info');
 
 const studentList = [studentNumber456, studentNumber457, studentNumber458, studentNumber459, studentNumber460];
 
-const newStudName = prompt('inserisci il nome dello studente da aggiungere');
-const newStudSurname = prompt('inserisci il cognome dello studente da aggiungere');
-const newStudAge = prompt("inserisci l'età dello studente da aggiungere");
+const submitButton = document.getElementById('create');
 
-const newStudent = {
-        name: newStudName,
-        surname: newStudSurname,
-        age: newStudAge,
-}
+submitButton.addEventListener('click', function(){
 
-studentList.push(newStudent);
-console.log(studentList);   
+    const newStudName = document.getElementById('stud-name').value;
+    const newStudSurname = document.getElementById('stud-surname').value;
+    const newStudAge = document.getElementById('stud-age').value;
+    
+    const newStudent = {
+            name: newStudName,
+            surname: newStudSurname,
+            age: newStudAge,
+    }
+    
+    studentList.push(newStudent);
+    console.log(studentList);   
+    
+    for (let i = 0; i < studentList.length; i++ ){
+        console.log(studentList[i]);
+        const students = studentList[i];  
+        let divElement = document.createElement("div");
+        divElement.innerText = ` Nome: ${students.name}
+        Cognome: ${students.surname}
+        
+        ` ;
+        studentCell.appendChild(divElement);   
+    }
 
-for (let i = 0; i < studentList.length; i++ ){
-    console.log(studentList[i]);
-    const students = studentList[i]
-   
-    let divElement = document.createElement("div");
-    divElement.innerText = ` Nome: ${students.name}
-    Cognome: ${students.surname}
-    
-    ` ;
-    studentCell.appendChild(divElement);
-    
-   
-    
-}
+
+})
+
 
